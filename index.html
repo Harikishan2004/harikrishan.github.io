@@ -3,93 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-   <style>
-   body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+    <title>Samira Hadid's Dynamic Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            border-left: 6px solid #1abc9c;
+        }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
+        .container:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #1abc9c;
+            padding-bottom: 20px;
+        }
 
-section {
-    padding: 20px;
-    margin: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        .profile-pic img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #1abc9c;
+            margin-right: 30px;
+            transition: transform 0.3s ease-in-out;
+        }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: #fff;
-}
-   </style>
+        .profile-pic img:hover {
+            transform: scale(1.05);
+        }
+
+        .name-title h1 {
+            font-size: 2.4rem;
+            color: #1abc9c;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .name-title h2 {
+            font-size: 1.2rem;
+            color: #34495e;
+            font-weight: 400;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin: 8px 0;
+            font-size: 1rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            color: #1abc9c;
+            margin-right: 12px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: #1abc9c;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .section ul li {
+            margin: 8px 0;
+            color: #555;
+        }
+
+        .education-entry, .experience-entry {
+            margin-bottom: 20px;
+        }
+
+        .education-entry h4, .experience-entry h4 {
+            font-size: 1.3rem;
+            color: #1abc9c;
+            font-weight: 600;
+        }
+
+        .education-entry p, .experience-entry p {
+            color: #777;
+            margin: 5px 0;
+        }
+
+        /* Dynamic Tab Styling */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1abc9c;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #1abc9c;
+            background-color: #fff;
+            border: 2px solid #1abc9c;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .tab:hover {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+
+        .active-tab {
+            background-color: #1abc9c;
+            color: #fff;
+        }
+
+        /* Button Styling */
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #1abc9c;
+            color: white;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #16a085;
+        }
+
+        /* Form Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Brief introduction about yourself.</p>
-    </section>
-
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project">
-            <h3>Project Title</h3>
-            <p>Description of the project.</p>
+    <div class="container">
+        <div class="header">
+            <div class="profile-pic">
+                <img src="profile_pic.png" alt="Samira Hadid's Profile Picture">
+            </div>
+            <div class="name-title">
+                <h1>Samira Hadid</h1>
+                <h2>Graphic Designer</h2>
+            </div>
+            <div class="contact-info">
+                <ul>
+                    <li><i class="fas fa-home"></i> 123 Anywhere St., Any City</li>
+                    <li><i class="fas fa-envelope"></i> hello@reallygreatsite.com</li>
+                    <li><i class="fas fa-phone"></i> 123-456-7890</li>
+                    <li><i class="fas fa-globe"></i> @reallygreatsite</li>
+                </ul>
+            </div>
         </div>
-        <!-- Add more projects as needed -->
-    </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </section>
+        <div class="tabs">
+            <div class="tab active-tab" onclick="changeTab('about')">About</div>
+            <div class="tab" onclick="changeTab('skills')">Skills</div>
+            <div class="tab" onclick="changeTab('experience')">Experience</div>
+            <div class="tab" onclick="changeTab('education')">Education</div>
+        </div>
 
-    <footer>
-        <p>&copy; 2024 My Portfolio</p>
-    </footer>
+        <div id="about" class="section active-section">
+            <h3>About Me</h3>
+            <p>I'm a passionate graphic designer with a love for creating meaningful visuals. My goal is to combine creativity and functionality to craft designs that not only look great but also work seamlessly for my clients.</p>
+        </div>
 
-    <script src="script.js"></script>
+        <div id="skills" class="section">
+            <h3>Skills</h3>
+            <ul>
+                <li>Graphic & Web Design</li>
+                <li>Illustration & Drawing</li>
+                <li>Branding & Identity</li>
+                <li>UI/UX Design</li>
+                <li>Adobe Creative Suite</li>
+                <li>Photography & Editing</li>
+            </ul>
+        </div>
+
+        <div id="experience" class="section">
+            <h3>Experience</h3>
+            <div class="experience-entry">
+                <h4>Timmerman Industries</h4>
+                <p>Application Developer</p>
+                <p>2020 - Present</p>
+                <ul>
+                    <li>Developed web applications using modern frameworks.</li>
+                    <li>Collaborated with design and product teams to improve user experience.</li>
+                </ul>
+            </div>
+            <div class="experience-entry">
+                <h4>Thynk Unlimited</h4>
+                <p>Web Content Manager</p>
+                <p>2018 - 2020</p>
+                <ul>
+                    <li>Managed web content and ensured SEO optimization.</li>
+                    <li>Created engaging content and multimedia for the website.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="education" class="section">
+            <h3>Education</h3>
+            <div class="education-entry">
+                <h4>Salford University</h4>
+                <p>Bachelor of Graphic Design</p>
+                <p>2014 - 2018</p>
+            </div>
+            <div class="education-entry">
+                <h4>Borcelle High School</h4>
+                <p>Administration Major</p>
+                <p>2011 - 2014</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <a href="mailto:hello@reallygreatsite.com" class="button">Contact Me</a>
+        </div>
+    </div>
+
+    <!-- Modal for Contact Form -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Contact Me</h2>
+            <form>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function changeTab(tabName) {
+            const sections = document.querySelectorAll('.section');
+            const tabs = document.querySelectorAll('.tab');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+            tabs.forEach(tab => {
+                tab.classList.remove('active-tab');
+            });
+
+            document.getElementById(tabName).classList.add('active-section');
+            const activeTab = Array.from(tabs).find(tab => tab.textContent.toLowerCase() === tabName);
+            activeTab.classList.add('active-tab');
+        }
+
+        // Open Modal
+        function openModal() {
+            document.getElementById("contactModal").style.display = "block";
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById("contactModal").style.display = "none";
+        }
+    </script>
 </body>
 </html>
+
