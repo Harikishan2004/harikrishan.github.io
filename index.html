@@ -208,6 +208,102 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: center;
+            }
+
+            .profile-pic img {
+                width: 100px;
+                height: 100px;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .name-title h1 {
+                font-size: 2rem;
+            }
+
+            .name-title h2 {
+                font-size: 1rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab {
+                margin: 5px 0;
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .section h3 {
+                font-size: 1.4rem;
+            }
+
+            .section ul li {
+                font-size: 0.9rem;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+
+            .contact-info ul li {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header {
+                margin-bottom: 20px;
+            }
+
+            .name-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .name-title h2 {
+                font-size: 0.9rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                font-size: 1rem;
+                padding: 8px 18px;
+            }
+
+            .section h3 {
+                font-size: 1.2rem;
+            }
+
+            .section ul li {
+                font-size: 0.85rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+
+            .contact-info ul li {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -239,7 +335,7 @@
 
         <div id="about" class="section active-section">
             <h3>About Me</h3>
-            <p>I'm a passionate graphic designer with a love for creating meaningful visuals. My goal is to combine creativity and functionality to craft designs that not only look great but also work seamlessly for my clients.</p>
+            <p>I'm a passionate graphic designer with a love for creating meaningful visuals. My goal is to combine creativity and functionality to craft designs that not only look great but also serve a purpose.</p>
         </div>
 
         <div id="skills" class="section">
@@ -247,9 +343,7 @@
             <ul>
                 <li>Graphic & Web Design</li>
                 <li>Illustration & Drawing</li>
-                <li>Branding & Identity</li>
-                <li>UI/UX Design</li>
-                <li>Adobe Creative Suite</li>
+                <li>Advertising & Branding</li>
                 <li>Photography & Editing</li>
             </ul>
         </div>
@@ -261,17 +355,8 @@
                 <p>Application Developer</p>
                 <p>2020 - Present</p>
                 <ul>
-                    <li>Developed web applications using modern frameworks.</li>
-                    <li>Collaborated with design and product teams to improve user experience.</li>
-                </ul>
-            </div>
-            <div class="experience-entry">
-                <h4>Thynk Unlimited</h4>
-                <p>Web Content Manager</p>
-                <p>2018 - 2020</p>
-                <ul>
-                    <li>Managed web content and ensured SEO optimization.</li>
-                    <li>Created engaging content and multimedia for the website.</li>
+                    <li>Developed web applications using modern technologies.</li>
+                    <li>Collaborated with a cross-functional team.</li>
                 </ul>
             </div>
         </div>
@@ -281,25 +366,17 @@
             <div class="education-entry">
                 <h4>Salford University</h4>
                 <p>Bachelor of Graphic Design</p>
-                <p>2014 - 2018</p>
-            </div>
-            <div class="education-entry">
-                <h4>Borcelle High School</h4>
-                <p>Administration Major</p>
-                <p>2011 - 2014</p>
+                <p>2014-2018</p>
             </div>
         </div>
 
-        <div class="section">
-            <a href="mailto:hello@reallygreatsite.com" class="button">Contact Me</a>
-        </div>
+        <div class="button" onclick="openModal()">Contact Me</div>
     </div>
 
-    <!-- Modal for Contact Form -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Contact Me</h2>
+            <h2>Contact Form</h2>
             <form>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
